@@ -5,56 +5,80 @@ program test_search
 
     implicit none
 
-    integer, dimension(1000) :: random_array
-    integer :: i
-    real :: temp
-    type(search_result) :: result
-    real :: start_time, finish_time
+!    integer :: i
+!    real :: temp
+!    real :: start_time, finish_time
 
     print *, "Testing..."
 
-    print *, "========================================"
+    print *, ""
     print *, "search_linear_search()"
-    print *, "========================================"
+    call test_search_linear_search()
 
-    call test_compare( search_linear_search([3, 7, 4, 0, 0, 8, 1, 2, 1, 10],  0),  4, "Test 01" )
-    call test_compare( search_linear_search([3, 7, 4, 0, 0, 8, 1, 2, 1, 10],  1),  7, "Test 02" )
-    call test_compare( search_linear_search([3, 7, 4, 0, 0, 8, 1, 2, 1, 10],  5), 11, "Test 03" )
-
-    print *, "========================================"
+    print *, ""
     print *, "search_binary_search()"
-    print *, "========================================"
+    call test_search_binary_search()
 
-    ! Note that simple binary search algorithm is not guaranteed to find the first occurrence
-    ! of the value in array.
-    result = search_binary_search([0, 0, 1, 1, 2, 3, 4, 7, 8, 10],  0)
-    call test_compare( result%found, .true., "Test 01a" )
-    call test_compare( result%index, 2, "Test 01b" )
+!    print *, "Benchmarking..."
+!    call random_seed()
+!    do i = 1, size(random_array)
+!        call random_number(temp)
+!        random_array(i) = 1 + floor(1000 * temp)
+!    end do
 
-    result = search_binary_search([0, 0, 1, 1, 2, 3, 4, 7, 8, 10],  1)
-    call test_compare( result%found, .true., "Test 02a" )
-    call test_compare( result%index, 3, "Test 02b" )
+!    call cpu_time(start_time)
+!    print *, search_linear_search(random_array, 5)
+!    call cpu_time(finish_time)
+!    print '("Time = ", f6.3, " seconds.")', finish_time - start_time
 
-    print *, "Benchmarking..."
-    call random_seed()
-    do i = 1, size(random_array)
-        call random_number(temp)
-        random_array(i) = 1 + floor(1000 * temp)
-    end do
+!    call cpu_time(start_time)
+!    ! sort array
+!    print *, search_binary_search(random_array, 5)
+!    call cpu_time(finish_time)
+!    print '("Time = ", f6.3, " seconds.")', finish_time - start_time
 
-    call cpu_time(start_time)
-    i = search_linear_search(random_array, 5)
-    call cpu_time(finish_time)
-    print *, i
-    print *, random_array(i)
-    print '("Time = ", f6.3, " seconds.")', finish_time - start_time
+contains
 
-    call cpu_time(start_time)
-    ! sort array
-    result = search_binary_search(random_array, 5)
-    call cpu_time(finish_time)
-    print *, result%found
-    print *, result%index
-    print '("Time = ", f6.3, " seconds.")', finish_time - start_time
+    subroutine test_search_linear_search()
+        integer, dimension(10) :: array
+
+        array = [8, 7, 0, 6, 4, 0, 5, 5, 7, 9]
+        ! non-existing elements 1, 2, 3
+        call test_assert_equal( search_linear_search(array,  1), 11, "test 01" )
+        call test_assert_equal( search_linear_search(array,  2), 11, "test 02" )
+        call test_assert_equal( search_linear_search(array,  3), 11, "test 03" )
+
+        ! existing unique elements 4, 6, 8, 9
+        call test_assert_equal( search_linear_search(array,  4),  5, "test 04" )
+        call test_assert_equal( search_linear_search(array,  6),  4, "test 05" )
+        call test_assert_equal( search_linear_search(array,  8),  1, "test 06" )
+        call test_assert_equal( search_linear_search(array,  9), 10, "test 07" )
+
+        ! existing non-unique elements 0, 5, 7
+        call test_assert_equal( search_linear_search(array,  0),  3, "test 08" )
+        call test_assert_equal( search_linear_search(array,  5),  7, "test 09" )
+        call test_assert_equal( search_linear_search(array,  7),  2, "test 10" )
+    end subroutine test_search_linear_search
+
+    subroutine test_search_binary_search()
+        integer, dimension(10) :: array
+
+        array = [0, 0, 4, 5, 5, 6, 7, 7, 8, 9]
+        ! non-existing elements 1, 2, 3
+        call test_assert_equal( search_linear_search(array,  1), 11, "test 01" )
+        call test_assert_equal( search_linear_search(array,  2), 11, "test 02" )
+        call test_assert_equal( search_linear_search(array,  3), 11, "test 03" )
+
+        ! existing unique elements 4, 6, 8, 9
+        call test_assert_equal( search_linear_search(array,  4),  3, "test 04" )
+        call test_assert_equal( search_linear_search(array,  6),  6, "test 05" )
+        call test_assert_equal( search_linear_search(array,  8),  9, "test 06" )
+        call test_assert_equal( search_linear_search(array,  9), 10, "test 07" )
+
+        ! existing non-unique elements 0, 5, 7
+        call test_assert_equal( search_linear_search(array,  0),  1, "test 08" )
+        call test_assert_equal( search_linear_search(array,  5),  4, "test 09" )
+        call test_assert_equal( search_linear_search(array,  7),  7, "test 10" )
+    end subroutine test_search_binary_search
 
 end program test_search
