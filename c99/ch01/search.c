@@ -1,6 +1,6 @@
 #include "search.h"
 
-size_t search_linear_search(int* array, size_t count, int value)
+size_t search_linear_search(const int* array, size_t count, int value)
 {
     size_t i = 0;
     while (i < count && array[i] != value) {
@@ -9,7 +9,7 @@ size_t search_linear_search(int* array, size_t count, int value)
     return i;
 }
 
-size_t search_binary_search(int* array, size_t count, int value)
+size_t search_binary_search(const int* array, size_t count, int value)
 {
     size_t l = 0;
     size_t r = count - 1;

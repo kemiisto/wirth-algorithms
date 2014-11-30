@@ -30,4 +30,8 @@ set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -std=c99 -pedantic")
 
 include_directories(${CMAKE_SOURCE_DIR})
 
+if (MINGW)
+    add_definitions(-D__USE_MINGW_ANSI_STDIO=1)
+endif (MINGW)
+
 add_subdirectory(ch01)
