@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(wirth_algorithms)
 
-if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
+if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
     set(OPTIMIZTION_FLAGS_DEBUG -O0)
     set(OPTIMIZTION_FLAGS_RELEASE -O2)
     set(STANDARD_FLAGS -std=c99 -pedantic-errors)
@@ -28,7 +28,7 @@ if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
         -Wundef
         -Wunreachable-code
         -ferror-limit=1)
-elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
     set(OPTIMIZTION_FLAGS_DEBUG -O0)
     set(OPTIMIZTION_FLAGS_RELEASE -O2)
     set(STANDARD_FLAGS -std=c99 -pedantic-errors)
@@ -55,12 +55,17 @@ elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
         -Wundef
         -Wunreachable-code
         -fmax-errors=1)
-elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
-elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
+elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
+elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     set(OPTIMIZTION_FLAGS_DEBUG /Od)
     set(OPTIMIZTION_FLAGS_RELEASE /O2)
     set(STANDARD_FLAGS )
     set(WARNING_FLAGS /Wall /WX)
+elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "PGI")
+    set(OPTIMIZTION_FLAGS_DEBUG -O0)
+    set(OPTIMIZTION_FLAGS_RELEASE -O2)
+    set(STANDARD_FLAGS -c99)
+    set(WARNING_FLAGS -Minform=warn)
 endif()
 
 foreach(FLAG ${STANDARD_FLAGS} ${WARNING_FLAGS})
@@ -79,8 +84,8 @@ message(STATUS "${CMAKE_C_FLAGS}")
 
 include_directories(${CMAKE_SOURCE_DIR})
 
-if (MINGW)
+if(MINGW)
     add_definitions(-D__USE_MINGW_ANSI_STDIO=1)
-endif (MINGW)
+endif(MINGW)
 
 add_subdirectory(ch01)
