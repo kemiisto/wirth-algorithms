@@ -1,6 +1,5 @@
 #include "util.h"
 
-#include <stdlib.h>
 #include <time.h>
 
 int* util_random_int_array(size_t count, int min_value, int max_value)
