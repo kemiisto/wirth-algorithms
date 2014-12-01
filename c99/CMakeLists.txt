@@ -10,7 +10,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wcast-qual")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wfloat-equal")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wformat=2")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Winline")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wlogical-op")
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wnested-externs")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-missing-braces")
@@ -25,7 +25,19 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wswitch-default")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wswitch-enum")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wundef")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wunreachable-code")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fmax-errors=1")
+
+if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wlogical-op-parentheses")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ferror-limit=1")
+elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wlogical-op")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fmax-errors=1")
+elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
+  # using Intel C++
+elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
+  # using Visual Studio C++
+endif()
+
 
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2 -march=native")
