@@ -1,3 +1,2 @@
-file(GLOB SOURCES *.c ../*.c)
-
-add_executable(test_search ${SOURCES})
+add_executable(test_search search.c test_search.c ../test.c)
+add_executable(bench_search search.c bench_search.c ../util.c)
