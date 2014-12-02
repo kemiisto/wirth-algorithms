@@ -56,22 +56,41 @@ elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
         -Wunreachable-code
         -fmax-errors=1)
 elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
-    set(DEBUG_FLAGS -O0)
-    set(RELEASE_FLAGS -O2)
-    set(STANDARD_FLAGS -std=c99)
-    set(WARNING_FLAGS -Wall -Wcheck -Werror
-        -Wformat
-        -Wmissing-declarations
-        -Wmissing-prototypes
-        -Wpointer-arith
-        -Wreturn-type
-        -Wshadow
-        -Wsign-compare
-        -Wstrict-prototypes
-        -Wtrigraphs
-        -Wuninitialized
-        -Wunused-function
-        -Wunused-variable)
+    if(WIN32)
+        set(DEBUG_FLAGS /O0)
+        set(RELEASE_FLAGS /O2)
+        set(STANDARD_FLAGS /Qstd=c99)
+        set(WARNING_FLAGS /Wall /Wcheck /WX
+            /Wformat
+            /Wmissing-declarations
+            /Wmissing-prototypes
+            /Wpointer-arith
+            /Wreturn-type
+            /Wshadow
+            /Wsign-compare
+            /Wstrict-prototypes
+            /Wtrigraphs
+            /Wuninitialized
+            /Wunused-function
+            /Wunused-variable)
+    else()
+        set(DEBUG_FLAGS -O0)
+        set(RELEASE_FLAGS -O2)
+        set(STANDARD_FLAGS -std=c99)
+        set(WARNING_FLAGS -Wall -Wcheck -Werror
+            -Wformat
+            -Wmissing-declarations
+            -Wmissing-prototypes
+            -Wpointer-arith
+            -Wreturn-type
+            -Wshadow
+            -Wsign-compare
+            -Wstrict-prototypes
+            -Wtrigraphs
+            -Wuninitialized
+            -Wunused-function
+            -Wunused-variable)
+    endif()
 elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     set(DEBUG_FLAGS /Od)
     set(RELEASE_FLAGS /O2)
