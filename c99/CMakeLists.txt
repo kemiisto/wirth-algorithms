@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 project(wirth_algorithms)
 
 if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
-    set(OPTIMIZATION_FLAGS_DEBUG -O0)
-    set(OPTIMIZATION_FLAGS_RELEASE -O2)
+    set(DEBUG_FLAGS -O0)
+    set(RELEASE_FLAGS -O2)
     set(STANDARD_FLAGS -std=c99 -pedantic-errors)
     set(WARNING_FLAGS -Wall -Wextra -Werror
         -Wbad-function-cast
@@ -29,8 +29,8 @@ if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
         -Wunreachable-code
         -ferror-limit=1)
 elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    set(OPTIMIZATION_FLAGS_DEBUG -O0)
-    set(OPTIMIZATION_FLAGS_RELEASE -O2)
+    set(DEBUG_FLAGS -O0)
+    set(RELEASE_FLAGS -O2)
     set(STANDARD_FLAGS -std=c99 -pedantic-errors)
     set(WARNING_FLAGS -Wall -Wextra -Werror
         -Wbad-function-cast
@@ -56,8 +56,8 @@ elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
         -Wunreachable-code
         -fmax-errors=1)
 elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
-    set(OPTIMIZATION_FLAGS_DEBUG -O0)
-    set(OPTIMIZATION_FLAGS_RELEASE -O2)
+    set(DEBUG_FLAGS -O0)
+    set(RELEASE_FLAGS -O2)
     set(STANDARD_FLAGS -std=c99)
     set(WARNING_FLAGS -Wall -Wcheck -Werror
         -Wformat
@@ -73,13 +73,13 @@ elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
         -Wunused-function
         -Wunused-variable)
 elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
-    set(OPTIMIZATION_FLAGS_DEBUG /Od)
-    set(OPTIMIZATION_FLAGS_RELEASE /O2)
+    set(DEBUG_FLAGS /Od)
+    set(RELEASE_FLAGS /O2)
     set(STANDARD_FLAGS )
     set(WARNING_FLAGS /Wall /WX)
 elseif("${CMAKE_C_COMPILER_ID}" STREQUAL "PGI")
-    set(OPTIMIZATION_FLAGS_DEBUG -O0)
-    set(OPTIMIZATION_FLAGS_RELEASE -O2)
+    set(DEBUG_FLAGS -O0)
+    set(RELEASE_FLAGS -O2)
     set(STANDARD_FLAGS -c99)
     set(WARNING_FLAGS -Minform=warn)
 endif()
@@ -88,11 +88,11 @@ foreach(FLAG ${STANDARD_FLAGS} ${WARNING_FLAGS})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${FLAG}")
 endforeach()
 
-foreach(FLAG ${OPTIMIZATION_FLAGS_DEBUG})
+foreach(FLAG ${DEBUG_FLAGS})
     set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ${FLAG}")
 endforeach()
 
-foreach(FLAG ${OPTIMIZATION_FLAGS_RELEASE})
+foreach(FLAG ${RELEASE_FLAGS})
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${FLAG}")
 endforeach()
 
