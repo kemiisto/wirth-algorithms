@@ -3,10 +3,12 @@
 size_t search_linear_search(const int* array, size_t count, int value)
 {
     size_t i = 0;
+    
     while (i < count && array[i] != value) {
         i++;
     }
-    return i;
+
+    return (i == count ? -1 : i);
 }
 
 size_t search_binary_search(const int* array, size_t count, int value)
@@ -25,7 +27,5 @@ size_t search_binary_search(const int* array, size_t count, int value)
         
     }
     
-    if (array[r] != value) r = count;
-
-    return r;
+    return (array[r] != value ? -1 : r);
 }
