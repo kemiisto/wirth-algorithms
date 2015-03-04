@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "string_search.h"
 #include "test.h"
@@ -34,6 +35,6 @@ void test_string_search_simple_search(void)
     );
     
     test_assert_equal_size_t(
-        string_search_simple_search("test", "qest"), -1, "test 05"
+        string_search_simple_search("test", "qest"), strlen("test"), "test 05"
     );
 }

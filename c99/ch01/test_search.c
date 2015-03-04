@@ -24,9 +24,9 @@ void test_search_linear_search(void)
     const int array[] = { 8, 7, 0, 6, 4, 0, 5, 5, 7, 9 };
 
     // non-existing elements 1, 2, 3
-    test_assert_equal_size_t(search_linear_search(array, 10, 1), -1, "test 01");
-    test_assert_equal_size_t(search_linear_search(array, 10, 2), -1, "test 02");
-    test_assert_equal_size_t(search_linear_search(array, 10, 3), -1, "test 03");
+    test_assert_equal_size_t(search_linear_search(array, 10, 1), 10, "test 01");
+    test_assert_equal_size_t(search_linear_search(array, 10, 2), 10, "test 02");
+    test_assert_equal_size_t(search_linear_search(array, 10, 3), 10, "test 03");
 
     // existing unique elements 4, 6, 8, 9
     test_assert_equal_size_t(search_linear_search(array, 10, 4),  4, "test 04");
@@ -45,9 +45,9 @@ void test_search_binary_search(void)
     const int array[] = { 0, 0, 4, 5, 5, 6, 7, 7, 8, 9 };
 
     // non-existing elements 1, 2, 3
-    test_assert_equal_size_t(search_binary_search(array, 10, 1), -1, "test 01");
-    test_assert_equal_size_t(search_binary_search(array, 10, 2), -1, "test 02");
-    test_assert_equal_size_t(search_binary_search(array, 10, 3), -1, "test 03");
+    test_assert_equal_size_t(search_binary_search(array, 10, 1), 10, "test 01");
+    test_assert_equal_size_t(search_binary_search(array, 10, 2), 10, "test 02");
+    test_assert_equal_size_t(search_binary_search(array, 10, 3), 10, "test 03");
 
     // existing unique elements 4, 6, 8, 9
     test_assert_equal_size_t(search_binary_search(array, 10, 4),  2, "test 04");

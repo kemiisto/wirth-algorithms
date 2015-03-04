@@ -44,9 +44,9 @@ contains
 
         array = [8, 7, 0, 6, 4, 0, 5, 5, 7, 9]
         ! non-existing elements 1, 2, 3
-        call test_assert_equal( search_linear_search(array,  1), -1, "test 01" )
-        call test_assert_equal( search_linear_search(array,  2), -1, "test 02" )
-        call test_assert_equal( search_linear_search(array,  3), -1, "test 03" )
+        call test_assert_equal( search_linear_search(array,  1), 10, "test 01" )
+        call test_assert_equal( search_linear_search(array,  2), 10, "test 02" )
+        call test_assert_equal( search_linear_search(array,  3), 10, "test 03" )
 
         ! existing unique elements 4, 6, 8, 9
         call test_assert_equal( search_linear_search(array,  4),  4, "test 04" )
@@ -65,9 +65,9 @@ contains
 
         array = [0, 0, 4, 5, 5, 6, 7, 7, 8, 9]
         ! non-existing elements 1, 2, 3
-        call test_assert_equal( search_linear_search(array,  1), -1, "test 01" )
-        call test_assert_equal( search_linear_search(array,  2), -1, "test 02" )
-        call test_assert_equal( search_linear_search(array,  3), -1, "test 03" )
+        call test_assert_equal( search_linear_search(array,  1), 10, "test 01" )
+        call test_assert_equal( search_linear_search(array,  2), 10, "test 02" )
+        call test_assert_equal( search_linear_search(array,  3), 10, "test 03" )
 
         ! existing unique elements 4, 6, 8, 9
         call test_assert_equal( search_linear_search(array,  4),  2, "test 04" )

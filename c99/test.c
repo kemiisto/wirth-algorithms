@@ -17,6 +17,18 @@ void test_assert_equal_size_t(size_t actual, size_t expected,
     }
 }
 
+void test_assert_equal_int(int actual, int expected, 
+    const char* description)
+{
+    if (actual == expected) {
+        print_passed_message(description);
+    } else {
+        print_failed_message(description);
+        printf("     actual: %zu\n", actual);
+        printf("   expected: %zu\n", expected);  
+    }
+}
+
 void print_passed_message(const char* description)
 {
     printf("|- %s passed.\n", description);

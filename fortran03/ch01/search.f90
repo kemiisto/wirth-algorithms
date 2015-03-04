@@ -9,7 +9,7 @@ module search
 contains
 
     ! Tries to find an element equal to value in an integer array.
-    ! Return an index of such element or -1 if it has not been found.
+    ! Return an index of such element or size(array) if it has not been found.
     ! If the array contains several elements equal to value,
     ! then returns the index of the first occurrence.
     pure function search_linear_search(array, value) result(i)
@@ -27,7 +27,6 @@ contains
             i = i + 1
         end do
 
-        if (i == n) i = -1
     end function search_linear_search
 
     pure function search_binary_search(array, value) result(r)
@@ -49,7 +48,7 @@ contains
             end if
         end do
 
-        if (array(r) /= value) r = -1
+        if (array(r) /= value) r = n
     end function search_binary_search
 
 end module search

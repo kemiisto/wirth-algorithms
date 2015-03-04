@@ -14,7 +14,7 @@ C as well as Oberon uses [zero-based numbering](http://en.wikipedia.org/wiki/Zer
 
 ### Dijkstra's Loop
 
-Both C and Oberon lack the so-called *Dijkstra's Loop* (also referred to as the Dijkstra's Guarded Loop) construct which is used in the book. It was originally defined in the [Guarded Command Language (GCL)](http://en.wikipedia.org/wiki/Guarded_Command_Language#Repetition%3a_do) with the following syntax,
+Both C and Fortran lack the so-called *Dijkstra's Loop* (also referred to as the Dijkstra's Guarded Loop) construct which is used in the book. It was originally defined in the [Guarded Command Language (GCL)](http://en.wikipedia.org/wiki/Guarded_Command_Language#Repetition%3a_do) with the following syntax,
 
     do G0 -> S0
     | G1 -> S1
