@@ -23,8 +23,7 @@ size_t search_binary_search(const int* array, size_t count, int value)
             l = m + 1;
         } else {
             r = m;
-        }
-        
+        }  
     }
     
     return (array[r] != value ? count : r);
