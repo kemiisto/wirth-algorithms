@@ -21,9 +21,9 @@ contains
         character(len=*), intent(in) :: description
 
         if (actual == expected) then
-            print *, "|- " // description // " passed."
+            call print_passed_message(description)
         else
-            print *, "|- " // description // " failed."
+            call print_failed_message(description)
             print *, "     actual:", actual
             print *, "   expected:", expected  
         end if
@@ -41,9 +41,9 @@ contains
 
         diff = actual - expected
         if ( abs(diff) / abs(actual) <= tolerance .and. abs(diff) / abs(expected) <= tolerance ) then
-            print *, "|- " // description // " passed."
+            call print_passed_message(description)
         else
-            print *, "|- " // description // " failed."
+            call print_failed_message(description)
             print *, "     actual:", actual
             print *, "   expected:", expected  
         end if
@@ -55,9 +55,9 @@ contains
         character(len=*), intent(in) :: description
 
         if (actual .eqv. expected) then
-            print *, "|- " // description // " passed."
+            call print_passed_message(description)
         else
-            print *, "|- " // description // " failed."
+            call print_failed_message(description)
             print *, "     actual:", actual
             print *, "   expected:", expected  
         end if
@@ -69,9 +69,9 @@ contains
         character(len=*), intent(in) :: description
 
         if (all(actual == expected)) then
-            print *, "|- " // description // " passed."
+            call print_passed_message(description)
         else
-            print *, "|- " // description // " failed."
+            call print_failed_message(description)
             print *, "     actual:", actual
             print *, "   expected:", expected  
         end if
@@ -83,12 +83,24 @@ contains
         character(len=*), intent(in) :: description
 
         if (all(actual == expected)) then
-            print *, "|- " // description // " passed."
+            call print_passed_message(description)
         else
-            print *, "|- " // description // " failed."
+            call print_failed_message(description)
             print *, "     actual:", actual
             print *, "   expected:", expected  
         end if
     end subroutine test_assert_equal_character_array_1d
+
+    subroutine print_passed_message(description)
+        character(len=*), intent(in) :: description
+
+        print *, "|- " // description // " passed."
+    end subroutine print_passed_message
+
+    subroutine print_failed_message(description)
+        character(len=*), intent(in) :: description
+
+        print *, "|- " // description // " FAILED!"
+    end subroutine print_failed_message
 
 end module test
