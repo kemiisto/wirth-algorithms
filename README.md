@@ -9,7 +9,7 @@ Book is available for free [here](http://www.inr.ac.ru/~info21/ADen/).
 Boolean operators in both C and Oberon are [short-circuit](http://en.wikipedia.org/wiki/Short-circuit_evaluation), while Fortran operators are neither short-circuit nor eager: the language specification allows the compiler to select the method for optimization.
 Consequently, conditionals and loops relaying on short-circuit evaluation, for instance,
 
-```component pascal
+```pascal
 WHILE (A) & (B) & (C) DO
   D
 END;
@@ -47,7 +47,7 @@ and with the semantics that the repetition executes the guarded commands repeate
 
 Dijkstra's Loop is directly supported in just a few programming languages (for instance, in Oberon-07), where its syntax is as follows,
 
-```component pascal
+```pascal
 WHILE G0 DO
     S0
 ELSIF G1 DO
