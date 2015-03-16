@@ -19,8 +19,8 @@ has to be rewritten in Fortran as follows,
 
 ```fortran
 do while (A)
-    if (B) exit
-    if (C) exit
+    if (.not. B) exit
+    if (.not. C) exit
     D
 end do
 ```
