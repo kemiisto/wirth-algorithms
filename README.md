@@ -28,7 +28,7 @@ end do
 ### Arrays numbering
 
 C as well as Oberon uses [zero-based numbering](http://en.wikipedia.org/wiki/Zero-based_numbering) for arrays, Fortran on the other hand has arrays with user-defined indices and by default subscripts starts with one.
-Without starting rather useless zero- vs. one-based numbering holy war, "[let us let our ordinals start at zero: an element's ordinal (subscript) equals the number of elements preceding it in the sequence](http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)."
+Without starting rather useless zero- vs. one-based numbering holy war, for languages which allow the freedom of choice we adopt the default numbering, since usually it the most commonly used choice in the corresponding community.
 
 ### Dijkstra's Loop
 

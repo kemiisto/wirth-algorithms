@@ -44,20 +44,20 @@ contains
 
         array = [8, 7, 0, 6, 4, 0, 5, 5, 7, 9]
         ! non-existing elements 1, 2, 3
-        call test_assert_equal( search_linear_search(array,  1), 10, "test 01" )
-        call test_assert_equal( search_linear_search(array,  2), 10, "test 02" )
-        call test_assert_equal( search_linear_search(array,  3), 10, "test 03" )
+        call test_assert_equal( search_linear_search(array,  1),  0, "test 01" )
+        call test_assert_equal( search_linear_search(array,  2),  0, "test 02" )
+        call test_assert_equal( search_linear_search(array,  3),  0, "test 03" )
 
         ! existing unique elements 4, 6, 8, 9
-        call test_assert_equal( search_linear_search(array,  4),  4, "test 04" )
-        call test_assert_equal( search_linear_search(array,  6),  3, "test 05" )
-        call test_assert_equal( search_linear_search(array,  8),  0, "test 06" )
-        call test_assert_equal( search_linear_search(array,  9),  9, "test 07" )
+        call test_assert_equal( search_linear_search(array,  4),  5, "test 04" )
+        call test_assert_equal( search_linear_search(array,  6),  4, "test 05" )
+        call test_assert_equal( search_linear_search(array,  8),  1, "test 06" )
+        call test_assert_equal( search_linear_search(array,  9), 10, "test 07" )
 
         ! existing non-unique elements 0, 5, 7
-        call test_assert_equal( search_linear_search(array,  0),  2, "test 08" )
-        call test_assert_equal( search_linear_search(array,  5),  6, "test 09" )
-        call test_assert_equal( search_linear_search(array,  7),  1, "test 10" )
+        call test_assert_equal( search_linear_search(array,  0),  3, "test 08" )
+        call test_assert_equal( search_linear_search(array,  5),  7, "test 09" )
+        call test_assert_equal( search_linear_search(array,  7),  2, "test 10" )
     end subroutine test_search_linear_search
 
     subroutine test_search_binary_search()
@@ -65,20 +65,20 @@ contains
 
         array = [0, 0, 4, 5, 5, 6, 7, 7, 8, 9]
         ! non-existing elements 1, 2, 3
-        call test_assert_equal( search_linear_search(array,  1), 10, "test 01" )
-        call test_assert_equal( search_linear_search(array,  2), 10, "test 02" )
-        call test_assert_equal( search_linear_search(array,  3), 10, "test 03" )
+        call test_assert_equal( search_linear_search(array,  1),  0, "test 01" )
+        call test_assert_equal( search_linear_search(array,  2),  0, "test 02" )
+        call test_assert_equal( search_linear_search(array,  3),  0, "test 03" )
 
         ! existing unique elements 4, 6, 8, 9
-        call test_assert_equal( search_linear_search(array,  4),  2, "test 04" )
-        call test_assert_equal( search_linear_search(array,  6),  5, "test 05" )
-        call test_assert_equal( search_linear_search(array,  8),  8, "test 06" )
-        call test_assert_equal( search_linear_search(array,  9),  9, "test 07" )
+        call test_assert_equal( search_linear_search(array,  4),  3, "test 04" )
+        call test_assert_equal( search_linear_search(array,  6),  6, "test 05" )
+        call test_assert_equal( search_linear_search(array,  8),  9, "test 06" )
+        call test_assert_equal( search_linear_search(array,  9), 10, "test 07" )
 
         ! existing non-unique elements 0, 5, 7
-        call test_assert_equal( search_linear_search(array,  0),  0, "test 08" )
-        call test_assert_equal( search_linear_search(array,  5),  3, "test 09" )
-        call test_assert_equal( search_linear_search(array,  7),  6, "test 10" )
+        call test_assert_equal( search_linear_search(array,  0),  1, "test 08" )
+        call test_assert_equal( search_linear_search(array,  5),  4, "test 09" )
+        call test_assert_equal( search_linear_search(array,  7),  7, "test 10" )
     end subroutine test_search_binary_search
 
 end program test_search

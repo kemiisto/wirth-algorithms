@@ -55,4 +55,48 @@ MODULE StringSearch;
     END;
   END SimpleSearchDijkstraLoop;
 
+  PROCEDURE KnuttMorrisPrattSearch*(string, pattern: ARRAY OF CHAR): INTEGER;
+  VAR
+    i, j, k, m, n: INTEGER;
+    d: ARRAY 10 OF INTEGER;
+  BEGIN
+    m := Strings.Length(pattern);
+    n := Strings.Length(string);
+    
+    d[0] := -1;
+    IF pattern[0] # pattern[1] THEN
+      d[1] := 0
+    ELSE
+      d[1] := -1;
+    END;
+    j := 1;
+    k := 0;
+    WHILE (j < m - 1) & (k >= 0) & (pattern[j] # pattern[k]) DO
+      k := d[k]
+    ELSIF j < m - 1 DO
+      INC(j);
+      INC(k);
+      IF pattern[j] # pattern[k] THEN
+        d[j] := k;
+      ELSE
+        d[j] := d[k]
+      END;
+    END;
+
+    i := 0;
+    j := 0;
+    WHILE (j < m) & (i < n) & (j >= 0) & (string[i] # pattern[j]) DO
+      j := d[j];
+    ELSIF (j < m) & (i < n) DO
+      INC(i);
+      INC(j);
+    END;
+
+    IF (j = m) THEN
+      RETURN i - m;
+    ELSE
+      RETURN n;
+    END;
+  END KnuttMorrisPrattSearch;
+
 END StringSearch.
