@@ -22,4 +22,4 @@ TestStringSearch.k: StringSearch.k
 	obc -c $<
 
 clean:
-	$(RM) *.k
+	$(RM) *.k *.exe
