@@ -2,7 +2,7 @@ Examples from N. Wirth "Algorithms and Data Structures. Oberon version", 2004, u
 
 Book is available for free [here](http://www.inr.ac.ru/~info21/ADen/).
 
-##General remarks
+## General remarks
 
 ### Short-circuit evaluation
 
