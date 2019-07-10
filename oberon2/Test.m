@@ -2,7 +2,7 @@ MODULE Test;
 
   IMPORT Out;
 
-  PROCEDURE AssertEqualInt*(actual, expected: INTEGER; description: ARRAY OF CHAR);
+  PROCEDURE RequireEqualInt*(actual, expected: INTEGER; description: ARRAY OF CHAR);
   BEGIN
     IF (actual = expected) THEN
       PrintPassedMessage(description);
@@ -15,7 +15,7 @@ MODULE Test;
       Out.Int(expected, 5);
       Out.Ln;
     END;
-  END AssertEqualInt;
+  END RequireEqualInt;
 
   PROCEDURE PrintPassedMessage(description: ARRAY OF CHAR);
   BEGIN
