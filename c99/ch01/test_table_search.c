@@ -21,23 +21,23 @@ void test_table_search_search(void)
     #define COUNT 5
     const char* table[COUNT] = { "best", "fest", "guest", "test", "wriest" };
 
-    test_assert_equal_size_t(
+    test_require_equal_size_t(
         table_search_search(table, COUNT, "chest"), COUNT, "test 01"
     );
 
-    test_assert_equal_size_t(
+    test_require_equal_size_t(
         table_search_search(table, COUNT, "best"), 0, "test 02"
     );
 
-    test_assert_equal_size_t(
+    test_require_equal_size_t(
         table_search_search(table, COUNT, "test"), 3, "test 03"
     );
 
-    test_assert_equal_size_t(
+    test_require_equal_size_t(
         table_search_search(table, COUNT, "wriest"), 4, "test 04"
     );
 
-    test_assert_equal_size_t(
+    test_require_equal_size_t(
         table_search_search(table, COUNT, "wries"), COUNT, "test 05"
     );
 }

@@ -5,8 +5,7 @@
 void print_passed_message(const char* description);
 void print_failed_message(const char* description);
 
-void test_assert_equal_size_t(size_t actual, size_t expected, 
-    const char* description)
+void test_require_equal_size_t(size_t actual, size_t expected, const char* description)
 {
     if (actual == expected) {
         print_passed_message(description);
@@ -17,8 +16,7 @@ void test_assert_equal_size_t(size_t actual, size_t expected,
     }
 }
 
-void test_assert_equal_int(int actual, int expected, 
-    const char* description)
+void test_require_equal_int(int actual, int expected, const char* description)
 {
     if (actual == expected) {
         print_passed_message(description);

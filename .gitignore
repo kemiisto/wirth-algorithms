@@ -2,3 +2,4 @@ build
 .idea
 *.exe
 *.k
+c99/cmake-build-debug/*

@@ -1,30 +1,51 @@
 #include "search.h"
 
-size_t search_linear_search(const int* array, size_t count, int value)
+size_t search_linear_search(const int* a, size_t n, int x)
 {
     size_t i = 0;
     
-    while (i < count && array[i] != value) {
+    while (i < n && a[i] != x) {
         i++;
     }
 
     return i;
 }
 
-size_t search_binary_search(const int* array, size_t count, int value)
+size_t search_binary_search(const int* a, size_t n, int x)
+{
+    // can not use unsigned type for l and r since
+    // in the specific case when l stays 0 through all the while loop (i.e. all elements in array are < x)
+    // l will always be <= r that will be decreasing to 0 but will never became negative
+    long l = 0;
+    long r = n - 1;
+    long m = (l + r) / 2;
+    
+    while (l <= r && a[m] != x) {
+        if (a[m] < x) {
+            l = m + 1;
+        } else {
+            r = m - 1;
+        }
+        m = (l + r) / 2;
+    }
+
+    return l > r ? n : m;
+}
+
+size_t search_binary_search_alt(const int* a, size_t n, int x)
 {
     size_t l = 0;
-    size_t r = count - 1;
+    size_t r = n;
     size_t m;
-    
+
     while (l < r) {
         m = (l + r) / 2;
-        if (array[m] < value) {
+        if (a[m] < x) {
             l = m + 1;
         } else {
             r = m;
-        }  
+        }
     }
-    
-    return (array[r] != value ? count : r);
+
+    return r < n && a[r] == x ? r : n;
 }
