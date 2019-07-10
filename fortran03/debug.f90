@@ -11,7 +11,7 @@ contains
     pure subroutine debug_assert(expression)
         logical, intent(in) :: expression
 
-        real, volatile :: r
+        real :: r
 
         r = 1.0
         if (.not. expression) r = r / 0.0

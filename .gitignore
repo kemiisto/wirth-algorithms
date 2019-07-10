@@ -3,3 +3,4 @@ build
 *.exe
 *.k
 c99/cmake-build-debug/*
+fortran03/debug/*
