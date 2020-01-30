@@ -13,9 +13,10 @@ size_t search_linear_search(const int* a, size_t n, int x)
 
 size_t search_binary_search(const int* a, size_t n, int x)
 {
-    // can not use unsigned type for l and r since
-    // in the specific case when l stays 0 through all the while loop (i.e. all elements in array are < x)
-    // l will always be <= r that will be decreasing to 0 but will never became negative
+    // can not use unsigned type for l and r due to wrap around semantics, i.e.
+    // in the specific case when all elements in array are < x,
+    // l stays 0 through the while loop and will always be <= r 
+    // that will be decreasing to 0 but will never became negative
     long l = 0;
     long r = n - 1;
     long m = (l + r) / 2;
